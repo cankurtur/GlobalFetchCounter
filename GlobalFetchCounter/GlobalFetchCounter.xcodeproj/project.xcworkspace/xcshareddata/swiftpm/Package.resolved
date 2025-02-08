@@ -1,0 +1,15 @@
+{
+  "originHash" : "dcc4046d67fdc3cca9d2c7b44b37bda04b3d6419db31dc4602506554766809e3",
+  "pins" : [
+    {
+      "identity" : "globalnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cankurtur-global/GlobalNetworking",
+      "state" : {
+        "revision" : "0c74298ff7ad564b59c5a2fa3fe9d7a9233e1a0a",
+        "version" : "4.1.1"
+      }
+    }
+  ],
+  "version" : 3
+}
