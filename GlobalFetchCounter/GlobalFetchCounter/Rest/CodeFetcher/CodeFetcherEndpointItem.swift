@@ -17,7 +17,7 @@ enum CodeFetcherEndpointItem: Endpoint {
         case .getRoot:
             ""
         case .getResponseCode(let path):
-            "/\(path)"
+            "\(path)"
         }
     }
     

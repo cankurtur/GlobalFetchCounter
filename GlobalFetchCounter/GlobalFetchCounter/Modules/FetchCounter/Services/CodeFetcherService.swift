@@ -11,7 +11,7 @@ import GlobalNetworking
 
 protocol CodeFetcherServiceProtocol {
     func getRoot() -> AnyPublisher<RootResponse, APIClientError>
-    func getUUIDCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError>
+    func getResponseCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError>
 }
 
 final class CodeFetcherServiceProvider: CodeFetcherServiceProtocol {
@@ -25,7 +25,7 @@ final class CodeFetcherServiceProvider: CodeFetcherServiceProtocol {
         return networkManager.request(endpoint: .getRoot, responseType: RootResponse.self)
     }
     
-    func getUUIDCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError> {
+    func getResponseCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError> {
         return networkManager.request(endpoint: .getResponseCode(path), responseType: ResponseCodeResponse.self)
     }
 }
