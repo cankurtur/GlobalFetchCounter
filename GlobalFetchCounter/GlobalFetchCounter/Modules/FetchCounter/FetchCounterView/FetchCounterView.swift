@@ -32,7 +32,7 @@ struct FetchCounterView: View {
             )
         }
         .padding()
-        .ignoresSafeArea()
+        .appAlert()
     }
 }
 
