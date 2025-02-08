@@ -7,7 +7,12 @@
 */
 
 // General
-"general.responseCode" = "Response Code";
-"general.fetchCount" = "Fetch Count";
-"general.fetch" = "Fetch";
+"general.warning" = "Warning";
+"general.ok" = "OK";
 "general.empty" = "-";
+
+// FetchCounterView
+"fetchCounter.responseCode" = "Response Code";
+"fetchCounter.fetchCount" = "Fetch Count";
+"fetchCounter.fetch" = "Fetch";
+
