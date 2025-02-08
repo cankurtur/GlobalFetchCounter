@@ -12,7 +12,7 @@ class FetchCounterDataProvider: FetchCounterDataProtocol {
     @Published private var currentCount: Int = UserDefaultConfig.fetchCount
     
     var currentCountPublisher: AnyPublisher<Int, Never> {
-        $currentCount.eraseToAnyPublisher()
+        return $currentCount.eraseToAnyPublisher()
     }
     
     func increaseNewCount() {

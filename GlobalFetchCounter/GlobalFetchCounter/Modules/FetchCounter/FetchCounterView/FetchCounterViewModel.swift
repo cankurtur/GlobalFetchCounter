@@ -15,15 +15,17 @@ class FetchCounterViewModel: ObservableObject {
     
     private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
     private let fetchCounterDataProvider: FetchCounterDataProtocol
-    
+    private let alertManager: any AlertManagerProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider(),
-        fetchCounterDataProvider: FetchCounterDataProtocol = FetchCounterDataProvider()
+        fetchCounterDataProvider: FetchCounterDataProtocol = FetchCounterDataProvider(),
+        alertManager: any AlertManagerProtocol = AlertManager.shared
     ) {
         self.codeFetcherServiceProvider = codeFetcherServiceProvider
         self.fetchCounterDataProvider = fetchCounterDataProvider
+        self.alertManager = alertManager
         setupBindings()
     }
     
@@ -48,8 +50,10 @@ class FetchCounterViewModel: ObservableObject {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    // TODO: - Alert will added here.
-                    print("-----",error.debugMessage)
+                    self.alertManager.presentAlert(
+                        title: Localizable.warning,
+                        message: error.message
+                    )
                     self.isLoading.toggle()
                 default:
                     break
