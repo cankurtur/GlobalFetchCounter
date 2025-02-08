@@ -18,11 +18,11 @@ public struct AppLinearGradient: ShapeStyle, View  {
     }
     
     public var body: some View {
-        LinearGradient(colors: [.purple, .red], startPoint: startPoint , endPoint: endPoint)
+        LinearGradient(colors: [Color.primaryPurple, Color.primaryRed], startPoint: startPoint , endPoint: endPoint)
     }
     
-    public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        LinearGradient(colors: [.purple, .red], startPoint: startPoint , endPoint: endPoint)
+    nonisolated public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        LinearGradient(colors: [Color.primaryPurple, Color.primaryRed], startPoint: startPoint , endPoint: endPoint)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25040C1C2D5804C9005E0D72 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 25040C1B2D5804C9005E0D72 /* UIComponents */; };
 		25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF01402D57EE8A00F26659 /* GlobalNetworking */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Packages/UIComponents,
 			);
 			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
 		};
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25040C1C2D5804C9005E0D72 /* UIComponents in Frameworks */,
 				25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +134,7 @@
 			name = GlobalFetchCounter;
 			packageProductDependencies = (
 				25AF01402D57EE8A00F26659 /* GlobalNetworking */,
+				25040C1B2D5804C9005E0D72 /* UIComponents */,
 			);
 			productName = GlobalFetchCounter;
 			productReference = 25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */;
@@ -216,6 +220,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */,
+				25040C1A2D5804C9005E0D72 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/UIComponents" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 25B3EB5C2D57C84E005DF855 /* Products */;
@@ -577,6 +582,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		25040C1A2D5804C9005E0D72 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/UIComponents" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GlobalFetchCounter/Packages/UIComponents;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -589,6 +601,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		25040C1B2D5804C9005E0D72 /* UIComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UIComponents;
+		};
 		25AF01402D57EE8A00F26659 /* GlobalNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */;

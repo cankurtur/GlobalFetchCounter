@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppGradientButton: View {
+public struct AppGradientButton: View {
     private let text: String
     private let action: () -> Void
     private let isLoading: Bool
@@ -18,7 +18,7 @@ struct AppGradientButton: View {
         self.isLoading = isLoading
     }
     
-    var body: some View {
+    public var body: some View {
         AppButton {
             action()
         } label: {
@@ -29,8 +29,8 @@ struct AppGradientButton: View {
                         ProgressView()
                     } else {
                         Text(text)
-                            .foregroundStyle(.white)
-                            .font(.title2)
+                            .foregroundStyle(Color.whiteText)
+                            .font(Font.primaryButton)
                             .bold()
                     }
                 }
@@ -45,3 +45,4 @@ struct AppGradientButton: View {
         print("Text Tapped")
     }, isLoading: false)
 }
+
