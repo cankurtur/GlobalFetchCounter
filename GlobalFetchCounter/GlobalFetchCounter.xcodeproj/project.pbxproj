@@ -33,9 +33,22 @@
 		25B3EB752D57C84F005DF855 /* GlobalFetchCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalFetchCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		25040B2E2D5801AF005E0D72 /* Exceptions for "GlobalFetchCounter" folder in "GlobalFetchCounter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		25B3EB5D2D57C84E005DF855 /* GlobalFetchCounter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				25040B2E2D5801AF005E0D72 /* Exceptions for "GlobalFetchCounter" folder in "GlobalFetchCounter" target */,
+			);
 			path = GlobalFetchCounter;
 			sourceTree = "<group>";
 		};
@@ -406,6 +419,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlobalFetchCounter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,6 +448,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlobalFetchCounter/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
