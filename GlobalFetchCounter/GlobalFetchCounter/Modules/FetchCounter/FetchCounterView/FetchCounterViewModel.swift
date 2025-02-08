@@ -14,12 +14,17 @@ class FetchCounterViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
+    private let fetchCounterDataProvider: FetchCounterDataProtocol
+    
     private var cancellables = Set<AnyCancellable>()
     
     init(
-        codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider()
+        codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider(),
+        fetchCounterDataProvider: FetchCounterDataProtocol = FetchCounterDataProvider()
     ) {
         self.codeFetcherServiceProvider = codeFetcherServiceProvider
+        self.fetchCounterDataProvider = fetchCounterDataProvider
+        setupBindings()
     }
     
     func fetchButtonTapped() {
@@ -51,8 +56,14 @@ class FetchCounterViewModel: ObservableObject {
                 }
             } receiveValue: { responseCode in
                 self.responseCode = responseCode
+                self.fetchCounterDataProvider.increaseNewCount()
                 self.isLoading.toggle()
             }
             .store(in: &cancellables)
+    }
+    
+    func setupBindings() {
+        fetchCounterDataProvider.currentCountPublisher
+            .assign(to: &$fetchCount)
     }
 }
