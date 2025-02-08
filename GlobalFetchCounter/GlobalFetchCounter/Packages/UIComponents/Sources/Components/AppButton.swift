@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AppButton<Label: View>: View {
+public struct AppButton<Label: View>: View {
     var action: () -> Void
     
     @ViewBuilder
     var label: Label
     
-    var body: some View {
+    public var body: some View {
         Button {
             action()
         } label: {
