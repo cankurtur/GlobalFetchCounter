@@ -13,27 +13,8 @@
 		25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF01402D57EE8A00F26659 /* GlobalNetworking */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		25B3EB6C2D57C84F005DF855 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25B3EB532D57C84E005DF855 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 25B3EB5A2D57C84E005DF855;
-			remoteInfo = GlobalFetchCounter;
-		};
-		25B3EB762D57C84F005DF855 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 25B3EB532D57C84E005DF855 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 25B3EB5A2D57C84E005DF855;
-			remoteInfo = GlobalFetchCounter;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalFetchCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		25B3EB6B2D57C84F005DF855 /* GlobalFetchCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalFetchCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25B3EB752D57C84F005DF855 /* GlobalFetchCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalFetchCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -57,16 +38,6 @@
 			path = GlobalFetchCounter;
 			sourceTree = "<group>";
 		};
-		25B3EB6E2D57C84F005DF855 /* GlobalFetchCounterTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GlobalFetchCounterTests;
-			sourceTree = "<group>";
-		};
-		25B3EB782D57C84F005DF855 /* GlobalFetchCounterUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GlobalFetchCounterUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,20 +52,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25B3EB682D57C84F005DF855 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25B3EB722D57C84F005DF855 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -102,8 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				25B3EB5D2D57C84E005DF855 /* GlobalFetchCounter */,
-				25B3EB6E2D57C84F005DF855 /* GlobalFetchCounterTests */,
-				25B3EB782D57C84F005DF855 /* GlobalFetchCounterUITests */,
 				25B3EB5C2D57C84E005DF855 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,8 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */,
-				25B3EB6B2D57C84F005DF855 /* GlobalFetchCounterTests.xctest */,
-				25B3EB752D57C84F005DF855 /* GlobalFetchCounterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,52 +100,6 @@
 			productReference = 25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		25B3EB6A2D57C84F005DF855 /* GlobalFetchCounterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 25B3EB822D57C84F005DF855 /* Build configuration list for PBXNativeTarget "GlobalFetchCounterTests" */;
-			buildPhases = (
-				25B3EB672D57C84F005DF855 /* Sources */,
-				25B3EB682D57C84F005DF855 /* Frameworks */,
-				25B3EB692D57C84F005DF855 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				25B3EB6D2D57C84F005DF855 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				25B3EB6E2D57C84F005DF855 /* GlobalFetchCounterTests */,
-			);
-			name = GlobalFetchCounterTests;
-			packageProductDependencies = (
-			);
-			productName = GlobalFetchCounterTests;
-			productReference = 25B3EB6B2D57C84F005DF855 /* GlobalFetchCounterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		25B3EB742D57C84F005DF855 /* GlobalFetchCounterUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 25B3EB852D57C84F005DF855 /* Build configuration list for PBXNativeTarget "GlobalFetchCounterUITests" */;
-			buildPhases = (
-				25B3EB712D57C84F005DF855 /* Sources */,
-				25B3EB722D57C84F005DF855 /* Frameworks */,
-				25B3EB732D57C84F005DF855 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				25B3EB772D57C84F005DF855 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				25B3EB782D57C84F005DF855 /* GlobalFetchCounterUITests */,
-			);
-			name = GlobalFetchCounterUITests;
-			packageProductDependencies = (
-			);
-			productName = GlobalFetchCounterUITests;
-			productReference = 25B3EB752D57C84F005DF855 /* GlobalFetchCounterUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,14 +112,6 @@
 				TargetAttributes = {
 					25B3EB5A2D57C84E005DF855 = {
 						CreatedOnToolsVersion = 16.2;
-					};
-					25B3EB6A2D57C84F005DF855 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 25B3EB5A2D57C84E005DF855;
-					};
-					25B3EB742D57C84F005DF855 = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 25B3EB5A2D57C84E005DF855;
 					};
 				};
 			};
@@ -237,28 +136,12 @@
 			projectRoot = "";
 			targets = (
 				25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */,
-				25B3EB6A2D57C84F005DF855 /* GlobalFetchCounterTests */,
-				25B3EB742D57C84F005DF855 /* GlobalFetchCounterUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		25B3EB592D57C84E005DF855 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25B3EB692D57C84F005DF855 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25B3EB732D57C84F005DF855 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,34 +158,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25B3EB672D57C84F005DF855 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25B3EB712D57C84F005DF855 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		25B3EB6D2D57C84F005DF855 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
-			targetProxy = 25B3EB6C2D57C84F005DF855 /* PBXContainerItemProxy */;
-		};
-		25B3EB772D57C84F005DF855 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
-			targetProxy = 25B3EB762D57C84F005DF855 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		25B3EB7D2D57C84F005DF855 /* Debug */ = {
@@ -482,74 +338,6 @@
 			};
 			name = Release;
 		};
-		25B3EB832D57C84F005DF855 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cankurtur.GlobalFetchCounterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlobalFetchCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GlobalFetchCounter";
-			};
-			name = Debug;
-		};
-		25B3EB842D57C84F005DF855 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cankurtur.GlobalFetchCounterTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlobalFetchCounter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GlobalFetchCounter";
-			};
-			name = Release;
-		};
-		25B3EB862D57C84F005DF855 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cankurtur.GlobalFetchCounterUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GlobalFetchCounter;
-			};
-			name = Debug;
-		};
-		25B3EB872D57C84F005DF855 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cankurtur.GlobalFetchCounterUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GlobalFetchCounter;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,24 +355,6 @@
 			buildConfigurations = (
 				25B3EB802D57C84F005DF855 /* Debug */,
 				25B3EB812D57C84F005DF855 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		25B3EB822D57C84F005DF855 /* Build configuration list for PBXNativeTarget "GlobalFetchCounterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				25B3EB832D57C84F005DF855 /* Debug */,
-				25B3EB842D57C84F005DF855 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		25B3EB852D57C84F005DF855 /* Build configuration list for PBXNativeTarget "GlobalFetchCounterUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				25B3EB862D57C84F005DF855 /* Debug */,
-				25B3EB872D57C84F005DF855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
