@@ -9,7 +9,7 @@ import GlobalNetworking
 
 extension Endpoint {
     var baseUrl: String {
-        return ClientBaseUrl.baseUrl.url
+        return Config.shared.baseUrl
     }
     
     var params: [String: Any]? {

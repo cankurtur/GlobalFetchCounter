@@ -6,31 +6,122 @@
 //
 
 import XCTest
+import Combine
+import GlobalNetworking
 @testable import GlobalFetchCounter
 
 final class FetchCounterViewModelTests: XCTestCase {
+    private var sut: FetchCounterViewModel!
+    private var mockCodeFetcherServiceProvider: MockCodeFetcherServiceProvider!
+    private var mockAlertManager: MockAlertManager!
+    private var cancellables: Set<AnyCancellable>!
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        mockCodeFetcherServiceProvider = MockCodeFetcherServiceProvider()
+        mockAlertManager = MockAlertManager()
+        sut = FetchCounterViewModel(codeFetcherServiceProvider: mockCodeFetcherServiceProvider, alertManager: mockAlertManager)
+        cancellables = []
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        mockCodeFetcherServiceProvider = nil
+        mockAlertManager = nil
+        sut = nil
+        cancellables = nil
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_fetchButtonTapped_rootPublisher_success() {
+        // Given
+        let expectedResponse = RootResponse(nextPath: "http://localhost8000")
+        mockCodeFetcherServiceProvider.mockRootResponse = expectedResponse
+        XCTAssertFalse(mockCodeFetcherServiceProvider.isGetRootCalled)
+        
+        // When
+        sut.fetchButtonTapped()
+        
+        // Then
+        var result: RootResponse?
+        mockCodeFetcherServiceProvider.getRoot()
+            .sink { _ in } receiveValue: { rootResponse in
+                result = rootResponse
+            }
+            .store(in: &cancellables)
+        
+        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
+        XCTAssertEqual(expectedResponse.nextPath, result?.nextPath)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_fetchButtonTapped_rootPublisher_failure() {
+        // Given
+        let expectedError = APIClientError.badRequest
+        let expectedAlertMessage = APIClientError.badRequest.message
+        mockCodeFetcherServiceProvider.mockError = expectedError
+        XCTAssertFalse(mockCodeFetcherServiceProvider.isGetRootCalled)
+        
+        // When
+        sut.fetchButtonTapped()
+        
+        // Then
+        var receievedError: APIClientError?
+        mockCodeFetcherServiceProvider.getRoot()
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    receievedError = error
+                }
+            }, receiveValue: { _ in })
+            .store(in: &cancellables)
+        
+        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
+        XCTAssertEqual(expectedError.statusCode, receievedError?.statusCode)
+        XCTAssertEqual(expectedAlertMessage, receievedError?.message)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_fetchButtonTapped_codePublisher_success() {
+        // Given
+        let expectedResponse = ResponseCodeResponse(path: "/path", responseCode: "0000")
+        mockCodeFetcherServiceProvider.mockResponseCodeResponse = expectedResponse
+        XCTAssertFalse(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        
+        // When
+        sut.fetchButtonTapped()
+        
+        // Then
+        var result: ResponseCodeResponse?
+        mockCodeFetcherServiceProvider.getResponseCode(with: "" )
+            .sink { _ in } receiveValue: { responseCodeResponse in
+                result = responseCodeResponse
+            }
+            .store(in: &cancellables)
+        
+        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        XCTAssertEqual(expectedResponse.path, result?.path)
+        XCTAssertEqual(expectedResponse.responseCode, result?.responseCode)
     }
-
+    
+    func test_fetchButtonTapped_codePublisher_failure() {
+        // Given
+        let expectedError = APIClientError.badRequest
+        let expectedAlertMessage = APIClientError.badRequest.message
+        mockCodeFetcherServiceProvider.mockError = expectedError
+        XCTAssertFalse(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        
+        // When
+        sut.fetchButtonTapped()
+        
+        // Then
+        var receievedError: APIClientError?
+        mockCodeFetcherServiceProvider.getResponseCode(with: "")
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    receievedError = error
+                }
+            }, receiveValue: { _ in })
+            .store(in: &cancellables)
+        
+        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        XCTAssertEqual(expectedError.statusCode, receievedError?.statusCode)
+        XCTAssertEqual(expectedAlertMessage, receievedError?.message)
+    }
 }

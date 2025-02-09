@@ -13,16 +13,18 @@ import GlobalNetworking
 final class CodeFetcherServiceProviderTests: XCTestCase {
     
     private var sut: MockCodeFetcherServiceProvider!
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
         sut = MockCodeFetcherServiceProvider()
+        cancellables = []
     }
     
     override func tearDown() {
         super.tearDown()
         sut = nil
+        cancellables = nil
     }
     
     func test_getRoot_success() {
