@@ -10,23 +10,23 @@ import Combine
 
 class FetchCounterViewModel: ObservableObject {
     @Published var responseCode: String = Localizable.empty
-    @Published var fetchCount: Int = 0
+    @Published var fetchCount: Int = UserDefaultConfig.fetchCount {
+        didSet {
+            UserDefaultConfig.fetchCount = fetchCount
+        }
+    }
     @Published var isLoading: Bool = false
     
     private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
-    private let fetchCounterDataProvider: FetchCounterDataProtocol
     private let alertManager: any AlertManagerProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider(),
-        fetchCounterDataProvider: FetchCounterDataProtocol = FetchCounterDataProvider(),
         alertManager: any AlertManagerProtocol = AlertManager.shared
     ) {
         self.codeFetcherServiceProvider = codeFetcherServiceProvider
-        self.fetchCounterDataProvider = fetchCounterDataProvider
         self.alertManager = alertManager
-        setupBindings()
     }
     
     func fetchButtonTapped() {
@@ -60,14 +60,9 @@ class FetchCounterViewModel: ObservableObject {
                 }
             } receiveValue: { responseCode in
                 self.responseCode = responseCode
-                self.fetchCounterDataProvider.increaseNewCount()
+                self.fetchCount += 1
                 self.isLoading.toggle()
             }
             .store(in: &cancellables)
-    }
-    
-    func setupBindings() {
-        fetchCounterDataProvider.currentCountPublisher
-            .assign(to: &$fetchCount)
     }
 }

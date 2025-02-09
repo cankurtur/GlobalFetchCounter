@@ -8,10 +8,9 @@
 import Foundation
 
 protocol AlertManagerProtocol: ObservableObject {
-    var isShowing: Bool { get set }
-    var alertTitle: String { get set }
-    var alertMessage: String { get set }
-    
+    var isShowing: Bool { get }
+    var alertTitle: String { get }
+    var alertMessage: String { get }
     func presentAlert(title: String, message: String)
     func dismissAlert()
 }
