@@ -1,5 +1,5 @@
 //
-//  GlobalFetchCounterTests.swift
+//  FetchCounterViewModelTests.swift
 //  GlobalFetchCounterTests
 //
 //  Created by Can Kurtur on 8.02.2025.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GlobalFetchCounter
 
-final class GlobalFetchCounterTests: XCTestCase {
+final class FetchCounterViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
