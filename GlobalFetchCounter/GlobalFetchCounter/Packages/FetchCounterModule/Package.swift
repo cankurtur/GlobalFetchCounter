@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/cankurtur-global/GlobalNetworking", from: "4.2.1"),
-        .package(name: "UIComponents", path: "./UIComponents"),
+        .package(name: "ComponentKit", path: "./ComponentKit"),
         .package(name: "CommonKit", path: "./CommonKit")
     ],
     targets: [
@@ -22,7 +22,7 @@ let package = Package(
             name: "FetchCounterModule",
             dependencies: [
                 .product(name: "GlobalNetworking", package: "GlobalNetworking"),
-                .product(name: "UIComponents", package: "UIComponents"),
+                .product(name: "ComponentKit", package: "ComponentKit"),
                 .product(name: "CommonKit", package: "CommonKit")
             ]),
         .testTarget(

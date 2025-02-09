@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UIComponents
+import ComponentKit
 
 /// This module fetches a response codes and keeps the count value inside UserDefaults.
 public struct FetchCounterView: View {
