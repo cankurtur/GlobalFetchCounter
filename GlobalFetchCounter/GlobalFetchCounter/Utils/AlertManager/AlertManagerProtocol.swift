@@ -11,7 +11,6 @@ protocol AlertManagerProtocol: ObservableObject {
     var isShowing: Bool { get }
     var alertTitle: String { get }
     var alertMessage: String { get }
-    
     func presentAlert(title: String, message: String)
     func dismissAlert()
 }
