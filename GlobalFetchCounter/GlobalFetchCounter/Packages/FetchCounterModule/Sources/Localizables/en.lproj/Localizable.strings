@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  FetchCounterModule
+
+  Created by Can Kurtur on 9.02.2025.
+  
+*/
+
+// FetchCounterModule
+"responseCode" = "Response Code";
+"fetchCount" = "Fetch Count";
+"fetch" = "Fetch";
