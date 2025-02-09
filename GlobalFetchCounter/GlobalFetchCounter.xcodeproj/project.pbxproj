@@ -39,6 +39,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Packages/CommonKit,
+				Packages/FetchCounterModule,
 				Packages/UIComponents,
 			);
 			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
