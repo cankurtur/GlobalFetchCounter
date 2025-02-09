@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+/// A custom button view that accepts a label and an action.
 public struct AppButton<Label: View>: View {
-    var action: () -> Void
+    public var action: () -> Void
     
     @ViewBuilder
-    var label: Label
+    public var label: Label
     
+    /// The body of the button, which defines the view layout.
     public var body: some View {
         Button {
             action()

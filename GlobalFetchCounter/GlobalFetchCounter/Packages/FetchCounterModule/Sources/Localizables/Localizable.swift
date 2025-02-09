@@ -9,7 +9,8 @@ import Foundation
 
 /// A struct that holds localized strings for the module.
 struct Localizable {
-    static let responseCode = NSLocalizedString("responseCode", comment: "")
-    static let fetchCount = NSLocalizedString("fetchCount", comment: "")
-    static let fetch = NSLocalizedString("fetch", comment: "")
+    static let responseCode = NSLocalizedString("Response Code", comment: "")
+    static let fetchCount = NSLocalizedString("Fetch Count", comment: "")
+    static let fetch = NSLocalizedString("Fetch", comment: "")
+    static let warning = NSLocalizedString("Warning", comment: "")
 }

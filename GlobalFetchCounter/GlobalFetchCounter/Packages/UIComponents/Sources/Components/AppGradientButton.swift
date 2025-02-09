@@ -7,17 +7,20 @@
 
 import SwiftUI
 
+/// A custom gradient button with optional loading state.
 public struct AppGradientButton: View {
     private let text: String
     private let action: () -> Void
     private let isLoading: Bool
     
+    /// Initializer to set the text, action, and loading state for the button.
     public init(text: String, action: @escaping () -> Void, isLoading: Bool) {
         self.text = text
         self.action = action
         self.isLoading = isLoading
     }
     
+    /// The body of the gradient button.
     public var body: some View {
         AppButton {
             action()
@@ -40,9 +43,10 @@ public struct AppGradientButton: View {
     }
 }
 
+// MARK: - Preview
+
 #Preview {
     AppGradientButton(text: "Text", action: {
         print("Text Tapped")
     }, isLoading: false)
 }
-

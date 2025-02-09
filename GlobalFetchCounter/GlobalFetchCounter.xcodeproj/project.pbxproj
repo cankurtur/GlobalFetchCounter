@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		25040C1C2D5804C9005E0D72 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 25040C1B2D5804C9005E0D72 /* UIComponents */; };
+		252471EE2D595FD600625264 /* CommonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 252471ED2D595FD600625264 /* CommonKit */; };
+		252471F12D595FE300625264 /* FetchCounterModule in Frameworks */ = {isa = PBXBuildFile; productRef = 252471F02D595FE300625264 /* FetchCounterModule */; };
 		25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF01402D57EE8A00F26659 /* GlobalNetworking */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				25040C1C2D5804C9005E0D72 /* UIComponents in Frameworks */,
+				252471EE2D595FD600625264 /* CommonKit in Frameworks */,
+				252471F12D595FE300625264 /* FetchCounterModule in Frameworks */,
 				25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +141,8 @@
 			packageProductDependencies = (
 				25AF01402D57EE8A00F26659 /* GlobalNetworking */,
 				25040C1B2D5804C9005E0D72 /* UIComponents */,
+				252471ED2D595FD600625264 /* CommonKit */,
+				252471F02D595FE300625264 /* FetchCounterModule */,
 			);
 			productName = GlobalFetchCounter;
 			productReference = 25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */;
@@ -223,6 +229,8 @@
 			packageReferences = (
 				25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */,
 				25040C1A2D5804C9005E0D72 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/UIComponents" */,
+				252471EC2D595FD600625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/CommonKit" */,
+				252471EF2D595FE300625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/FetchCounterModule" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 25B3EB5C2D57C84E005DF855 /* Products */;
@@ -589,6 +597,14 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = GlobalFetchCounter/Packages/UIComponents;
 		};
+		252471EC2D595FD600625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/CommonKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GlobalFetchCounter/Packages/CommonKit;
+		};
+		252471EF2D595FE300625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/FetchCounterModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GlobalFetchCounter/Packages/FetchCounterModule;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -606,6 +622,14 @@
 		25040C1B2D5804C9005E0D72 /* UIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIComponents;
+		};
+		252471ED2D595FD600625264 /* CommonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CommonKit;
+		};
+		252471F02D595FE300625264 /* FetchCounterModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FetchCounterModule;
 		};
 		25AF01402D57EE8A00F26659 /* GlobalNetworking */ = {
 			isa = XCSwiftPackageProductDependency;

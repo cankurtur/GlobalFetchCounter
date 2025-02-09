@@ -11,7 +11,7 @@ import CommonKit
 
 /// The ViewModel for FetchCounterView, responsible for handling the logic and state.
 final class FetchCounterViewModel: ObservableObject {
-    @Published var responseCode: String = Localizable.empty
+    @Published var responseCode: String = ""
     @Published var isLoading: Bool = false
     @Published var isErrorOccored: Bool = false
     @Published var errorMessage: String = ""

@@ -10,7 +10,7 @@ import Combine
 import GlobalNetworking
 
 /// A protocol defining methods for fetching data from a service.
-protocol CodeFetcherServiceProvider {
+protocol CodeFetcherServiceProtocol {
     // A method to fetch the root response from the API.
     func getRoot() -> AnyPublisher<RootResponse, APIClientError>
     // A method to fetch the response code for a given path from the API.
