@@ -14,9 +14,21 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GlobalFetchCounterTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>258400682D5A942600786937</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>25B3EB5A2D57C84E005DF855</key>
 		<dict>
 			<key>primary</key>

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FetchCounterModule
 
 @main
 struct GlobalFetchCounterApp: App {
