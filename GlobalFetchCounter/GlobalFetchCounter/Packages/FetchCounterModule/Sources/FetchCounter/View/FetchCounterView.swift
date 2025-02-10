@@ -11,6 +11,9 @@ import ComponentKit
 /// This module fetches a response codes and keeps the count value inside UserDefaults.
 public struct FetchCounterView: View {
     @StateObject var viewModel = FetchCounterViewModel()
+    @State private var isLoading: Bool = false
+    @State private var isShowAlert: Bool = false
+    @State private var currentAlertModel: AlertModel?
     
     /// The initializer doesn't need any special setup when the view is created.
     public init() { }
@@ -33,18 +36,25 @@ public struct FetchCounterView: View {
                 action: {
                     viewModel.fetchButtonTapped()
                 },
-                isLoading: false
+                isLoading: isLoading
             )
         }
         .padding()
-        .alert(
-          Localizable.warning,
-          isPresented: $viewModel.isErrorOccored
-        ) {
-            Button("OK") { }
-        } message: {
-          Text(viewModel.errorMessage)
-        }
+        .onReceive(viewModel.$fetchState, perform: { state in
+            switch state {
+            case .loading:
+                isLoading = true
+            case .success:
+                isLoading = false
+            case .errorOccuered(let message):
+                isLoading = false
+                currentAlertModel = AlertModel(message: message)
+                isShowAlert = true
+            case .initial:
+                break
+            }
+        })
+        .appAlert(isPresented: $isShowAlert, alertModel: currentAlertModel)
     }
 }
 
@@ -53,3 +63,4 @@ public struct FetchCounterView: View {
 #Preview {
     FetchCounterView()
 }
+

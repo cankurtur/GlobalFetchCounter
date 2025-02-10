@@ -24,7 +24,9 @@ let package = Package(
                 .product(name: "GlobalNetworking", package: "GlobalNetworking"),
                 .product(name: "ComponentKit", package: "ComponentKit"),
                 .product(name: "CommonKit", package: "CommonKit")
-            ]),
+            ],
+            resources: [.process("Resources")]
+        ),
         .testTarget(
               name: "FetchCounterModuleTests",
               dependencies: ["FetchCounterModule"]

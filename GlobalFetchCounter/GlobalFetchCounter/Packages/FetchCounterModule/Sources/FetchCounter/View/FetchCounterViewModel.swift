@@ -11,34 +11,22 @@ import CommonKit
 
 /// The ViewModel for FetchCounterView, responsible for handling the logic and state.
 final class FetchCounterViewModel: ObservableObject {
-    @Published var responseCode: String = ""
-    @Published var isLoading: Bool = false
-    @Published var isErrorOccored: Bool = false
-    @Published var errorMessage: String = ""
-    
     @UserDefaultProperty(key: UserDefaultKeys.fetchCount, defaultValue: 0)
     var fetchCount: Int
-    //
-    //    @Published var state = ScreenState.loading
-    //
-    //    enum ScreenState {
-    //      case loading
-    //      case errorOccured(errorMessage: String)
-    //      case success
-    //    }
-    //
+    
+    @Published var responseCode: String = ""
+    @Published var fetchState: FetchState = .initial
+    
     private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(
-        codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider()
-    ) {
+    init(codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider()) {
         self.codeFetcherServiceProvider = codeFetcherServiceProvider
     }
     
     // Function to handle the api request with Combine when the "fetch" button is tapped.
     func fetchButtonTapped() {
-        isLoading.toggle()
+        fetchState = .loading
         let rootPublisher = codeFetcherServiceProvider.getRoot()
         
         let codePublisher = rootPublisher
@@ -50,24 +38,23 @@ final class FetchCounterViewModel: ObservableObject {
             .flatMap { path in
                 return self.codeFetcherServiceProvider.getResponseCode(with: path)
             }
+        
+        codePublisher
             .receive(on: RunLoop.main)
             .compactMap{ $0.responseCode }
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    self.isErrorOccored = true
-                    self.errorMessage = error.message
-                    self.isLoading.toggle()
-                    //self.state = .errorOccured(errorMessage: error.message)
+                    self.fetchState = .errorOccuered(message: error.message)
                 default:
                     break
                 }
             } receiveValue: { responseCode in
                 self.responseCode = responseCode
                 self.fetchCount += 1
-                self.isLoading.toggle()
-                //state = .success
+                self.fetchState = .success
             }
             .store(in: &cancellables)
     }
 }
+
