@@ -13,7 +13,7 @@ let package = Package(
             targets: ["CommonKit"]),
     ],
     dependencies: [
-      .package(url: "https://github.com/cankurtur-global/GlobalNetworking", from: "4.2.1"),
+      .package(url: "https://github.com/cankurtur-global/GlobalNetworking", from: "4.2.2"),
       .package(name: "ConfigKit", path: "./ConfigKit")
     ],
     targets: [
