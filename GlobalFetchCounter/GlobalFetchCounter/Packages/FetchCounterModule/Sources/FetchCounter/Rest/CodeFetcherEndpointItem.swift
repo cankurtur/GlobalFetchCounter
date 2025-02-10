@@ -5,8 +5,9 @@
 //  Created by Can Kurtur on 9.02.2025.
 //
 
-import GlobalNetworking
 import CommonKit
+
+// MARK: - CodeFetcherEndpointItem
 
 enum CodeFetcherEndpointItem: Endpoint {
     

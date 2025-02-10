@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import GlobalNetworking
+import CommonKit
 
 /// A protocol defining methods for fetching data from a service.
 protocol CodeFetcherServiceProtocol {
