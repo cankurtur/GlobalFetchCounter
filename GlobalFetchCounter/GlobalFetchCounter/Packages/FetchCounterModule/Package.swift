@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/cankurtur-global/GlobalNetworking", from: "4.2.1"),
         .package(name: "ComponentKit", path: "./ComponentKit"),
-        .package(name: "CommonKit", path: "./CommonKit")
+        .package(name: "CommonKit", path: "./CommonKit"),
+        .package(name: "ConfigKit", path: "./ConfigKit")
     ],
     targets: [
         .target(
@@ -23,7 +24,8 @@ let package = Package(
             dependencies: [
                 .product(name: "GlobalNetworking", package: "GlobalNetworking"),
                 .product(name: "ComponentKit", package: "ComponentKit"),
-                .product(name: "CommonKit", package: "CommonKit")
+                .product(name: "CommonKit", package: "CommonKit"),
+                .product(name: "ConfigKit", package: "ConfigKit")
             ],
             resources: [.process("Resources")]
         ),

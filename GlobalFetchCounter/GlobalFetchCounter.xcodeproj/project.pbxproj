@@ -10,6 +10,8 @@
 		252471EE2D595FD600625264 /* CommonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 252471ED2D595FD600625264 /* CommonKit */; };
 		252471F12D595FE300625264 /* FetchCounterModule in Frameworks */ = {isa = PBXBuildFile; productRef = 252471F02D595FE300625264 /* FetchCounterModule */; };
 		252471F62D5964E700625264 /* ComponentKit in Frameworks */ = {isa = PBXBuildFile; productRef = 252471F52D5964E700625264 /* ComponentKit */; };
+		258DB7722D5A17820030EFC2 /* ConfigKit in Frameworks */ = {isa = PBXBuildFile; productRef = 258DB7712D5A17820030EFC2 /* ConfigKit */; };
+		258DB7752D5A17E80030EFC2 /* ConfigKit in Frameworks */ = {isa = PBXBuildFile; productRef = 258DB7742D5A17E80030EFC2 /* ConfigKit */; };
 		25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF01402D57EE8A00F26659 /* GlobalNetworking */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,7 @@
 			membershipExceptions = (
 				Info.plist,
 				Packages/CommonKit,
+				Packages/ConfigKit,
 				Packages/FetchCounterModule,
 			);
 			target = 25B3EB5A2D57C84E005DF855 /* GlobalFetchCounter */;
@@ -45,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				258DB7722D5A17820030EFC2 /* ConfigKit in Frameworks */,
+				258DB7752D5A17E80030EFC2 /* ConfigKit in Frameworks */,
 				252471EE2D595FD600625264 /* CommonKit in Frameworks */,
 				252471F12D595FE300625264 /* FetchCounterModule in Frameworks */,
 				25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */,
@@ -95,6 +100,8 @@
 				252471ED2D595FD600625264 /* CommonKit */,
 				252471F02D595FE300625264 /* FetchCounterModule */,
 				252471F52D5964E700625264 /* ComponentKit */,
+				258DB7712D5A17820030EFC2 /* ConfigKit */,
+				258DB7742D5A17E80030EFC2 /* ConfigKit */,
 			);
 			productName = GlobalFetchCounter;
 			productReference = 25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */;
@@ -129,6 +136,7 @@
 				252471EC2D595FD600625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/CommonKit" */,
 				252471EF2D595FE300625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/FetchCounterModule" */,
 				252471F42D5964E700625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/ComponentKit" */,
+				258DB7732D5A17E80030EFC2 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/ConfigKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 25B3EB5C2D57C84E005DF855 /* Products */;
@@ -374,6 +382,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = GlobalFetchCounter/Packages/ComponentKit;
 		};
+		258DB7732D5A17E80030EFC2 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/ConfigKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GlobalFetchCounter/Packages/ConfigKit;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -399,6 +411,14 @@
 		252471F52D5964E700625264 /* ComponentKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ComponentKit;
+		};
+		258DB7712D5A17820030EFC2 /* ConfigKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ConfigKit;
+		};
+		258DB7742D5A17E80030EFC2 /* ConfigKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ConfigKit;
 		};
 		25AF01402D57EE8A00F26659 /* GlobalNetworking */ = {
 			isa = XCSwiftPackageProductDependency;

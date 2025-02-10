@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import ConfigKit
 import CommonKit
 
 /// The ViewModel for FetchCounterView, responsible for handling the logic and state.

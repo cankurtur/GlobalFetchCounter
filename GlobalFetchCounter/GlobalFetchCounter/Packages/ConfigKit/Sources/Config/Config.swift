@@ -1,8 +1,8 @@
 //
 //  Config.swift
-//  CommonKit
+//  ConfigKit
 //
-//  Created by Can Kurtur on 9.02.2025.
+//  Created by Can Kurtur on 10.02.2025.
 //
 
 import Foundation
