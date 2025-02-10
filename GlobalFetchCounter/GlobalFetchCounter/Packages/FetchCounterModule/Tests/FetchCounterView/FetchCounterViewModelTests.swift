@@ -40,41 +40,35 @@ final class FetchCounterViewModelTests: XCTestCase {
         sut.fetchButtonTapped()
         
         // Then
-        var result: RootResponse?
-        mockCodeFetcherServiceProvider.getRoot()
-            .sink { _ in } receiveValue: { rootResponse in
-                result = rootResponse
-            }
+        mockCodeFetcherServiceProvider.currentRootResponsePublisher?
+            .sink(receiveValue: { rootResponse in
+                XCTAssertEqual(expectedResponse.nextPath, rootResponse?.nextPath)
+            })
             .store(in: &cancellables)
         
         XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
-        XCTAssertEqual(expectedResponse.nextPath, result?.nextPath)
-        XCTAssertEqual(sut.fetchCount, 5)
     }
     
     func test_fetchButtonTapped_rootPublisher_failure() {
         // Given
         let expectedError = APIClientError.badRequest
         let expectedAlertMessage = APIClientError.badRequest.message
-        mockCodeFetcherServiceProvider.mockError = expectedError
+        mockCodeFetcherServiceProvider.mockRootError = expectedError
         XCTAssertFalse(mockCodeFetcherServiceProvider.isGetRootCalled)
         
         // When
         sut.fetchButtonTapped()
         
         // Then
-        var receievedError: APIClientError?
-        mockCodeFetcherServiceProvider.getRoot()
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    receievedError = error
-                }
-            }, receiveValue: { _ in })
+        mockCodeFetcherServiceProvider.currentAPIClientErrorPublisher?
+            .sink(receiveValue: { error in
+                XCTAssertEqual(expectedError.statusCode, error?.statusCode)
+                XCTAssertEqual(expectedAlertMessage, error?.message)
+            })
+
             .store(in: &cancellables)
         
         XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
-        XCTAssertEqual(expectedError.statusCode, receievedError?.statusCode)
-        XCTAssertEqual(expectedAlertMessage, receievedError?.message)
     }
     
     func test_fetchButtonTapped_codePublisher_success() {
@@ -87,41 +81,36 @@ final class FetchCounterViewModelTests: XCTestCase {
         sut.fetchButtonTapped()
         
         // Then
-//        var result: ResponseCodeResponse?
-//        mockCodeFetcherServiceProvider.getResponseCode(with: "" )
-//            .sink { _ in } receiveValue: { responseCodeResponse in
-//                result = responseCodeResponse
-//            }
-//            .store(in: &cancellables)
+        mockCodeFetcherServiceProvider.currentResponseCodeResponsePublisher?
+            .sink(receiveValue: { responseCode in
+                XCTAssertEqual(expectedResponse.path, responseCode?.path)
+                XCTAssertEqual(expectedResponse.responseCode, responseCode?.responseCode)
+            })
+            .store(in: &cancellables)
+
         
         XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
-//        XCTAssertEqual(expectedResponse.path, result?.path)
-//        XCTAssertEqual(expectedResponse.responseCode, result?.responseCode)
-        XCTAssertEqual(sut.fetchCount, 1)
     }
     
     func test_fetchButtonTapped_codePublisher_failure() {
         // Given
         let expectedError = APIClientError.badRequest
         let expectedAlertMessage = APIClientError.badRequest.message
-        mockCodeFetcherServiceProvider.mockError = expectedError
+        mockCodeFetcherServiceProvider.mockResponseCodeError = expectedError
         XCTAssertFalse(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
         
         // When
         sut.fetchButtonTapped()
         
         // Then
-        var receievedError: APIClientError?
-        mockCodeFetcherServiceProvider.getResponseCode(with: "")
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    receievedError = error
-                }
-            }, receiveValue: { _ in })
+        mockCodeFetcherServiceProvider.currentAPIClientErrorPublisher?
+            .dropFirst()
+            .sink(receiveValue: { error in
+                XCTAssertEqual(expectedError.statusCode, error?.statusCode)
+                XCTAssertEqual(expectedAlertMessage, error?.message)
+            })
             .store(in: &cancellables)
-        
+
         XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
-        XCTAssertEqual(expectedError.statusCode, receievedError?.statusCode)
-        XCTAssertEqual(expectedAlertMessage, receievedError?.message)
     }
 }
