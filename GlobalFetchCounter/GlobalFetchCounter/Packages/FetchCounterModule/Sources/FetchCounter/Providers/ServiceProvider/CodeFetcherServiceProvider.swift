@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import GlobalNetworking
 import CommonKit
 
 /// A class that fetches data using a network manager.
