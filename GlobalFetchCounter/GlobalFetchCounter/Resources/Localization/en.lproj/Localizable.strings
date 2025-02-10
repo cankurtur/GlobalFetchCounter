@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  GlobalFetchCounter
+
+  Created by Can Kurtur on 10.02.2025.
+  
+*/
+
+"fetchCounter.responseCode" = "Response Code";
+"fetchCounter.fetchCount" = "Fetch Count";
+"fetchCounter.fetch" = "Fetch";
