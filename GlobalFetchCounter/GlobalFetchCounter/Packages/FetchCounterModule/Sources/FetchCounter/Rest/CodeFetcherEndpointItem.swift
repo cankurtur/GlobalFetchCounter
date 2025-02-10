@@ -29,5 +29,4 @@ enum CodeFetcherEndpointItem: Endpoint {
             return .get
         }
     }
-    
 }

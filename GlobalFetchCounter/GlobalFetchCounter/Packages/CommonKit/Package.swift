@@ -24,5 +24,9 @@ let package = Package(
             .product(name: "ConfigKit", package: "ConfigKit")
           ]
         ),
+        .testTarget(
+              name: "CommonKitTests",
+              dependencies: ["CommonKit"]
+          ),
     ]
 )

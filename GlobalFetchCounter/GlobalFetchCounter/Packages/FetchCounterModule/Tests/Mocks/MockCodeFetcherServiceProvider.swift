@@ -1,5 +1,5 @@
 //
-//  CodeFetcherServiceProviderTests.swift
+//  MockCodeFetcherServiceProvider.swift
 //  FetchCounterModule
 //
 //  Created by Can Kurtur on 9.02.2025.
@@ -12,34 +12,40 @@ import GlobalNetworking
 
 final class MockCodeFetcherServiceProvider: CodeFetcherServiceProtocol {
     
+    var currentRootResponsePublisher: Published<RootResponse?>.Publisher? { $currentRootResponse }
+    @Published private(set) var currentRootResponse: RootResponse?
+    
+    var currentResponseCodeResponsePublisher: Published<ResponseCodeResponse?>.Publisher? { $currentResponseCodeResponse }
+    @Published private(set) var currentResponseCodeResponse: ResponseCodeResponse?
+    
+    var currentAPIClientErrorPublisher: Published<APIClientError?>.Publisher? { $currentApiClientError }
+    @Published private(set) var currentApiClientError: APIClientError?
+
     var isGetRootCalled = false
     var isGetResponseCodeCalled = false
     
     var mockRootResponse: RootResponse?
     var mockResponseCodeResponse: ResponseCodeResponse?
-    var mockError: APIClientError?
-  
-    var isResponseReceieved: Published<Bool>.Publisher { $receieved }
-    @Published private(set) var receieved: Bool = false
+    var mockRootError: APIClientError?
+    var mockResponseCodeError: APIClientError?
     
     func getRoot() -> AnyPublisher<RootResponse, APIClientError> {
         isGetRootCalled = true
         
-        if let error = mockError {
+        if let error = mockRootError {
+            currentApiClientError = error
             return Fail(error: error)
                 .eraseToAnyPublisher()
         }
         
         guard let response = mockRootResponse else {
-          receieved = true
             let defaultResponse = RootResponse(nextPath: "default_next_path")
             return Just(defaultResponse)
                 .setFailureType(to: APIClientError.self)
                 .eraseToAnyPublisher()
         }
         
-      
-      
+        currentRootResponse = response
         return Just(response)
             .setFailureType(to: APIClientError.self)
             .eraseToAnyPublisher()
@@ -48,7 +54,8 @@ final class MockCodeFetcherServiceProvider: CodeFetcherServiceProtocol {
     func getResponseCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError> {
         isGetResponseCodeCalled = true
         
-        if let error = mockError {
+        if let error = mockResponseCodeError {
+            currentApiClientError = error
             return Fail(error: error)
                 .eraseToAnyPublisher()
         }
@@ -60,6 +67,7 @@ final class MockCodeFetcherServiceProvider: CodeFetcherServiceProtocol {
                 .eraseToAnyPublisher()
         }
         
+        currentResponseCodeResponse = response
         return Just(response)
             .setFailureType(to: APIClientError.self)
             .eraseToAnyPublisher()
