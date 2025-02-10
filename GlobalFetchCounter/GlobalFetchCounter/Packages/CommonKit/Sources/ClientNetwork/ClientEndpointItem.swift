@@ -5,6 +5,7 @@
 //  Created by Can Kurtur on 9.02.2025.
 //
 
+import ConfigKit
 import GlobalNetworking
 
 /// Default configuration for client API endpoints.
