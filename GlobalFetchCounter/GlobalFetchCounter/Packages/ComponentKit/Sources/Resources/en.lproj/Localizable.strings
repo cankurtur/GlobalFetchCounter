@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  ComponentKit
+
+  Created by Can Kurtur on 10.02.2025.
+  
+*/
+
+"warning" = "Warning";
+"ok" = "OK";
+"empty" = "";
