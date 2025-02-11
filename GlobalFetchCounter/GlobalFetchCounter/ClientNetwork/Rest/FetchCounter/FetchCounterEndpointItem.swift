@@ -1,13 +1,13 @@
 //
-//  CodeFetcherEndpointItem.swift
-//  FetchCounterModule
+//  FetchCounterEndpointItem.swift
+//  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 9.02.2025.
 //
 
-// MARK: - CodeFetcherEndpointItem
+// MARK: - FetchCounterEndpointItem
 
-enum CodeFetcherEndpointItem: Endpoint {
+enum FetchCounterEndpointItem: Endpoint {
     
     case getRoot
     case getResponseCode(_ path: String)

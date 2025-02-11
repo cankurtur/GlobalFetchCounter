@@ -1,5 +1,5 @@
 //
-//  MockCodeFetcherServiceProvider.swift
+//  MockFetchCounterServiceProvider.swift
 //  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 11.02.2025.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 @testable import GlobalFetchCounter
 
-final class MockCodeFetcherServiceProvider: CodeFetcherServiceProtocol {
+final class MockFetchCounterServiceProvider: FetchCounterServiceProtocol {
     
     var currentRootResponsePublisher: Published<RootResponse?>.Publisher? { $currentRootResponse }
     @Published private(set) var currentRootResponse: RootResponse?

@@ -1,6 +1,6 @@
 //
 //  AppAlertModel.swift
-//  CommonKit
+//  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 10.02.2025.
 //
