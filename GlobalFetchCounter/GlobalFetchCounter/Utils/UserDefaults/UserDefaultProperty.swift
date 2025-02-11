@@ -42,11 +42,3 @@ struct UserDefaultProperty<Value: Codable> {
         }
     }
 }
-
-/// Convenience initializer for optional values
-extension UserDefaultProperty where Value: ExpressibleByNilLiteral {
-    init(key: UserDefaultKeys) {
-        self.init(key: key, defaultValue: nil)
-    }
-}
-
