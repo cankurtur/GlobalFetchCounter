@@ -20,15 +20,15 @@ public struct AppDescriptedText: View {
     
     /// The body of the view, which defines the layout and appearance of the title and description.
     public var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: AppPadding.contentPadding) {
             Text(title)
                 .multilineTextAlignment(.center)
-                .font(Font.primaryTitle)
-                .foregroundStyle(Color.primaryPurple)
+                .font(AppFont.primaryTitle)
+                .foregroundStyle(AppColor.primaryTitle)
             Text(description)
                 .multilineTextAlignment(.center)
-                .font(Font.primarySubtitle)
-                .foregroundStyle(Color.primaryText)
+                .font(AppFont.primarySubtitle)
+                .foregroundStyle(AppColor.primaryText)
         }
     }
 }

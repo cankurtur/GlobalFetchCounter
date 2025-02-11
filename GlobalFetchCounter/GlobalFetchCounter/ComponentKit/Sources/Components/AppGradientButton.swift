@@ -32,8 +32,8 @@ public struct AppGradientButton: View {
                         ProgressView()
                     } else {
                         Text(text)
-                            .foregroundStyle(Color.whiteText)
-                            .font(Font.primaryButton)
+                            .foregroundStyle(AppColor.secondaryText)
+                            .font(AppFont.primaryButton)
                             .bold()
                     }
                 }

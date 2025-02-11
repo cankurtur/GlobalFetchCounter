@@ -60,7 +60,7 @@ class ClientEndpointTests: XCTestCase {
 class MockEndpointItem: Endpoint {
     private let classPath: String
     
-    public init(path: String) {
+    init(path: String) {
         self.classPath = path
     }
 

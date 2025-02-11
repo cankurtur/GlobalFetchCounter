@@ -13,10 +13,10 @@ struct FetchCounterView: View {
     @State private var isLoading: Bool = false
     @State private var isShowAlert: Bool = false
     @State private var currentAlertModel: AlertModel?
-    @State private var responseCode: String = ""
+    @State private var responseCode: String = Localizable.empty
 
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: AppPadding.contentPadding) {
             AppDescriptedText(
                 title: Localizable.responseCode,
                 description: responseCode
@@ -35,7 +35,7 @@ struct FetchCounterView: View {
                 isLoading: isLoading
             )
         }
-        .padding()
+        .padding(AppPadding.containerPadding)
         .onReceive(viewModel.$fetchState, perform: { state in
             switch state {
             case .loading:

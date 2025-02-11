@@ -15,9 +15,9 @@ enum CodeFetcherEndpointItem: Endpoint {
     var path: String {
         switch self {
         case .getRoot:
-            ""
+            return Localizable.empty
         case .getResponseCode(let path):
-            "\(path)"
+            return path
         }
     }
     
