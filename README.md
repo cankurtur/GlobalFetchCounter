@@ -96,7 +96,7 @@ This approach prioritizes testability and modularity over minor performance opti
 
 ### XCFramework for GlobalNetworking 
 
-- Reusability & Modularity – By packaging GlobalNetworking as an `XCFramewor`k, it can be easily reused across multiple projects without duplicating code.
+- Reusability & Modularity – By packaging GlobalNetworking as an `XCFramework`, it can be easily reused across multiple projects without duplicating code.
 - Binary Distribution – Since `XCFrameworks` contain precompiled binaries, they improve build times and make integration more efficient.
 - Cross-Platform Support – `XCFrameworks` support multiple architectures (iOS, macOS, etc.), making them more flexible than traditional frameworks.
 - Public Repository for Open Access – The framework is now available as a public repository.
