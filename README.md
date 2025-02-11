@@ -78,7 +78,7 @@ The App retains a FetchCounterModule which consists of a View and ViewModel. The
 
 ## Trade-offs
 ### Not using Singleton for NetworkManager
-The network manager could be used with a CompositionRoot singleton class. Since the network manager is thread-safe, it would be possible to create a CompositionRoot singleton and add the network manager as a lazy variable. This way, the network manager would be accessible throughout the app via the singleton.
+The network manager could be used with a `CompositionRoot` singleton class. Since the network manager is thread-safe, it would be possible to create a `CompositionRoot` singleton and add the network manager as a lazy variable. This way, the network manager would be accessible throughout the app via the singleton.
 
 However, instead of using a singleton, I chose to create a network manager instance inside the service provider.
 
@@ -96,9 +96,15 @@ This approach prioritizes testability and modularity over minor performance opti
 
 ### XCFramework for GlobalNetworking 
 
-- Reusability & Modularity – By packaging GlobalNetworking as an XCFramework, it can be easily reused across multiple projects without duplicating code.
-- Binary Distribution – Since XCFrameworks contain precompiled binaries, they improve build times and make integration more efficient.
-- Cross-Platform Support – XCFrameworks support multiple architectures (iOS, macOS, etc.), making them more flexible than traditional frameworks.
+- Reusability & Modularity – By packaging GlobalNetworking as an `XCFramewor`k, it can be easily reused across multiple projects without duplicating code.
+- Binary Distribution – Since `XCFrameworks` contain precompiled binaries, they improve build times and make integration more efficient.
+- Cross-Platform Support – `XCFrameworks` support multiple architectures (iOS, macOS, etc.), making them more flexible than traditional frameworks.
 - Public Repository for Open Access – The framework is now available as a public repository.
 
-This approach ensures scalability, better organization, and easier dependency management for networking functionality. 
+### Managing Network Requests: State Management vs. Throttling
+I chose to use state management instead of the throttle operator in the FetchCounterViewModel to prevent concurrent API requests. The state already handles the loading case, which partly serves as a throttle mechanism. This approach offers several advantages:
+
+- Provides visual feedback to users through loading states.
+- Offers better control over UI states.
+- Makes the code more readable and maintainable.
+- Facilitates easier testing.
