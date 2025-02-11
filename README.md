@@ -108,6 +108,7 @@ I chose to use state management instead of the throttle operator in the FetchCou
 - Offers better control over UI states.
 - Makes the code more readable and maintainable.
 - Facilitates easier testing.
+- 
 
 ## Notes
 UserDefaults caches data for fast access and updates changes immediately within the app. However, it writes these changes to persistent storage (disk) and other processes **asynchronously**. If the app closes suddenly right after saving a value, the change might not be written to disk in time. As a result, when the app reopens, the value retrieved from UserDefaults may not be the latest update, showing an older value instead. It means that if you stop the app after changing the value, you might not see the correct value on the next launch.
