@@ -11,3 +11,8 @@ import Foundation
 enum UserDefaultKeys: String {
     case fetchCount
 }
+
+struct UserDefaultConfig {
+    @UserDefaultProperty(key: UserDefaultKeys.fetchCount, defaultValue: 0)
+    static var fetchCount: Int
+}

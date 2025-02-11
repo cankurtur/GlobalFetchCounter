@@ -10,11 +10,12 @@ import Combine
 
 /// The ViewModel for FetchCounterView, responsible for handling the logic and state.
 final class FetchCounterViewModel: ObservableObject {
-    @UserDefaultProperty(key: UserDefaultKeys.fetchCount, defaultValue: 0)
-    var fetchCount: Int
-    
-    @Published var responseCode: String = ""
-    @Published var fetchState: FetchState = .initial
+    @Published private(set) var fetchState: FetchState = .initial
+    @Published private(set) var fetchCount: Int = UserDefaultConfig.fetchCount {
+        didSet {
+            UserDefaultConfig.fetchCount.increase()
+        }
+    }
     
     private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -64,7 +65,7 @@ private extension FetchCounterViewModel {
     func handleCompletion(_ completion: Subscribers.Completion<APIClientError>) {
         switch completion {
         case .failure(let error):
-            fetchState = .errorOccuered(message: error.message)
+            fetchState = .errorOccured(message: error.message)
         case .finished:
             break
         }
@@ -72,8 +73,7 @@ private extension FetchCounterViewModel {
     
     // Updates the view state after successfully fetching a response code.
     func handleSuccess(_ responseCode: String) {
-        self.responseCode = responseCode
-        self.fetchCount += 1
-        self.fetchState = .success
+        self.fetchCount.increase()
+        self.fetchState = .success(result: responseCode)
     }
 }

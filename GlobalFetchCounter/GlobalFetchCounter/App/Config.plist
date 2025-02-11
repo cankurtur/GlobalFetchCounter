@@ -5,12 +5,12 @@
 	<key>Debug</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>http://localhost8000</string>
+		<string>http://localhost:8000</string>
 	</dict>
 	<key>Release</key>
 	<dict>
 		<key>baseUrl</key>
-		<string>http://localhost8000</string>
+		<string>http://localhost:8000</string>
 	</dict>
 </dict>
 </plist>

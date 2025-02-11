@@ -13,12 +13,13 @@ struct FetchCounterView: View {
     @State private var isLoading: Bool = false
     @State private var isShowAlert: Bool = false
     @State private var currentAlertModel: AlertModel?
+    @State private var responseCode: String = ""
 
     var body: some View {
         VStack(spacing: 10) {
             AppDescriptedText(
                 title: Localizable.responseCode,
-                description: viewModel.responseCode
+                description: responseCode
             )
             
             AppDescriptedText(
@@ -39,9 +40,10 @@ struct FetchCounterView: View {
             switch state {
             case .loading:
                 isLoading = true
-            case .success:
+            case .success(let result):
+                responseCode = result
                 isLoading = false
-            case .errorOccuered(let message):
+            case .errorOccured(let message):
                 isLoading = false
                 currentAlertModel = AlertModel(message: message)
                 isShowAlert = true

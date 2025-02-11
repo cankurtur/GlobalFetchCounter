@@ -8,13 +8,14 @@
 import Foundation
 
 /// Enum representing the state of a fetch operation when clicking on fetch button..
-enum FetchState {
+enum FetchState: Equatable {
+    
     /// Initial state before the fetch starts.
     case initial
     /// The fetch is in progress (loading state).
     case loading
     /// An error occurred during the fetch, includes an `message` for error details.
-    case errorOccuered(message: String)
+    case errorOccured(message: String)
     /// The fetch was successful.
-    case success
+    case success(result: String)
 }
