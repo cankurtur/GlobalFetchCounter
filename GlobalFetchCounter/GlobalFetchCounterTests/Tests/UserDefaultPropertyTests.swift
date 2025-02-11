@@ -16,6 +16,12 @@ class UserDefaultConfigTests: XCTestCase {
         UserDefaultConfig.fetchCount = 0
     }
     
+    override func tearDown() {
+        super.setUp()
+        // Reset to default value before each test. Different suit name use for Test Cases to avoid changing the real value of the property.
+        UserDefaultConfig.fetchCount = 0
+    }
+    
     func testFetchCount() {
         // Initial value should be the default (0)
         XCTAssertEqual(UserDefaultConfig.fetchCount, 0)

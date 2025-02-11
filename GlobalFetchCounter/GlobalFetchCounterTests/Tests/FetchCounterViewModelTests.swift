@@ -19,6 +19,8 @@ final class FetchCounterViewModelTests: XCTestCase {
         mockFetchCounterServiceProvider = MockFetchCounterServiceProvider()
         sut = FetchCounterViewModel(fetchCounterServiceProvider: mockFetchCounterServiceProvider)
         cancellables = []
+        // Reset to default value before each test. Different suit name use for Test Cases to avoid changing the real value of the property.
+        UserDefaultConfig.fetchCount = 0
     }
     
     override func tearDown() {
@@ -26,6 +28,8 @@ final class FetchCounterViewModelTests: XCTestCase {
         mockFetchCounterServiceProvider = nil
         sut = nil
         cancellables = nil
+        // Reset to default value before each test. Different suit name use for Test Cases to avoid changing the real value of the property.
+        UserDefaultConfig.fetchCount = 0
     }
 
     func test_fetchButtonTapped_rootPublisher_success() {
