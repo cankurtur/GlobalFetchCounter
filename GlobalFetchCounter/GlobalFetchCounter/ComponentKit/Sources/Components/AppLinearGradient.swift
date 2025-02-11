@@ -21,12 +21,12 @@ public struct AppLinearGradient: ShapeStyle, View  {
     
     /// The body of the view that defines the appearance of the gradient.
     public var body: some View {
-        LinearGradient(colors: [Color.primaryPurple, Color.primaryRed], startPoint: startPoint , endPoint: endPoint)
+        LinearGradient(colors: [AppColor.primaryTitle, AppColor.secondaryTitle], startPoint: startPoint , endPoint: endPoint)
     }
     
     /// Resolves the gradient style in the given environment (needed for `ShapeStyle` conformance).
     nonisolated public func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
-        LinearGradient(colors: [Color.primaryPurple, Color.primaryRed], startPoint: startPoint , endPoint: endPoint)
+        LinearGradient(colors: [AppColor.primaryTitle, AppColor.secondaryTitle], startPoint: startPoint , endPoint: endPoint)
     }
 }
 

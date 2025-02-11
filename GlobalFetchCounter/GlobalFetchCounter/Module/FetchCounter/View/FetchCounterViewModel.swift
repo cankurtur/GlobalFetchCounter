@@ -46,7 +46,7 @@ private extension FetchCounterViewModel {
         codeFetcherServiceProvider.getRoot()
             .compactMap { $0.nextPath }
             .map { nextPath -> String in
-                nextPath.replacingOccurrences(of: Config.shared.baseUrl, with: "")
+                nextPath.replacingOccurrences(of: Config.shared.baseUrl, with: Localizable.empty)
             }
             .eraseToAnyPublisher()
     }

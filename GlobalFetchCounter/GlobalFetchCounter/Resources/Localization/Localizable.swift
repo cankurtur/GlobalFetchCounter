@@ -8,8 +8,11 @@
 import Foundation
 
 struct Localizable {
+    // MARK: - General
+    static let empty = NSLocalizedString("general.empty", comment: "Empty string text.")
+    
     // MARK: - FetchCounter
-    static let responseCode = NSLocalizedString("fetchCounter.responseCode", comment: "")
-    static let fetchCount = NSLocalizedString("fetchCounter.fetchCount", comment: "")
-    static let fetch = NSLocalizedString("fetchCounter.fetch", comment: "")
+    static let responseCode = NSLocalizedString("fetchCounter.responseCode", comment: "Response code text.")
+    static let fetchCount = NSLocalizedString("fetchCounter.fetchCount", comment: "Fetch count text.")
+    static let fetch = NSLocalizedString("fetchCounter.fetch", comment: "Fetch action text")
 }

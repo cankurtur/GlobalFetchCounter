@@ -6,6 +6,10 @@
   
 */
 
+//MARK: - General
+"general.empty" = "";
+
+//MARK: - FetchCounter
 "fetchCounter.responseCode" = "Response Code";
 "fetchCounter.fetchCount" = "Fetch Count";
 "fetchCounter.fetch" = "Fetch";

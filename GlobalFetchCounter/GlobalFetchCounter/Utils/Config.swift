@@ -7,12 +7,12 @@
 
 import Foundation
 
-class Config: NSObject {
+struct Config {
     static let shared = Config()
   
     var configs: NSDictionary!
     
-    override private init() {
+    private init() {
         let currentConfiguration = Bundle.app.object(forInfoDictionaryKey: "Config")!
         let path = Bundle.main.path(forResource: "Config", ofType: "plist")!
         configs = (NSDictionary(contentsOfFile: path)!.object(forKey: currentConfiguration) as! NSDictionary)

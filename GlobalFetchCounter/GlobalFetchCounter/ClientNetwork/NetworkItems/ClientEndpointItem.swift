@@ -20,7 +20,7 @@ extension Endpoint {
     
     /// Full URL constructed using `baseUrl` and `path`.
     var url: String {
-        return "\(baseUrl)\(path)"
+        return baseUrl + path
     }
     
     /// Default HTTP headers for the request.
