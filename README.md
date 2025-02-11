@@ -76,7 +76,7 @@ The App retains a FetchCounterModule which consists of a View and ViewModel. The
 -	A custom `@propertyWrapper` named `UserDefaultsProperty` was created to facilitate storing and retrieving values in `UserDefaults`. This wrapper supports the storage of `Codable` responses in `UserDefaults`.
 -	To safeguard sensitive information such as API keys and base URLs, a `Config` file was created. This approach centralizes the management of sensitive values and ensures they are securely handled within the application, preventing direct access to these values
 
-## Trade offs
+## Trade-offs
 ### Not using Singleton for NetworkManager
 The network manager could be used with a CompositionRoot singleton class. Since the network manager is thread-safe, it would be possible to create a CompositionRoot singleton and add the network manager as a lazy variable. This way, the network manager would be accessible throughout the app via the singleton.
 
