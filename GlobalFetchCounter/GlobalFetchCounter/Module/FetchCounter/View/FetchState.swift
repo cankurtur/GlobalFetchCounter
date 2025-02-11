@@ -1,6 +1,6 @@
 //
 //  FetchState.swift
-//  FetchCounterModule
+//  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 10.02.2025.
 //

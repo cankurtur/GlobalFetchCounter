@@ -11,19 +11,19 @@ import Combine
 
 final class FetchCounterViewModelTests: XCTestCase {
     private var sut: FetchCounterViewModel!
-    private var mockCodeFetcherServiceProvider: MockCodeFetcherServiceProvider!
+    private var mockFetchCounterServiceProvider: MockFetchCounterServiceProvider!
     private var cancellables: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
-        mockCodeFetcherServiceProvider = MockCodeFetcherServiceProvider()
-        sut = FetchCounterViewModel(codeFetcherServiceProvider: mockCodeFetcherServiceProvider)
+        mockFetchCounterServiceProvider = MockFetchCounterServiceProvider()
+        sut = FetchCounterViewModel(fetchCounterServiceProvider: mockFetchCounterServiceProvider)
         cancellables = []
     }
     
     override func tearDown() {
         super.tearDown()
-        mockCodeFetcherServiceProvider = nil
+        mockFetchCounterServiceProvider = nil
         sut = nil
         cancellables = nil
     }
@@ -31,99 +31,99 @@ final class FetchCounterViewModelTests: XCTestCase {
     func test_fetchButtonTapped_rootPublisher_success() {
         // Given
         let expectedResponse = RootResponse(nextPath: "http://localhost8000")
-        mockCodeFetcherServiceProvider.mockRootResponse = expectedResponse
+        mockFetchCounterServiceProvider.mockRootResponse = expectedResponse
         
         // When
         sut.fetchButtonTapped()
         
         // Then
         XCTAssertEqual(sut.fetchState, .loading)
-        mockCodeFetcherServiceProvider.currentRootResponsePublisher?
+        mockFetchCounterServiceProvider.currentRootResponsePublisher?
             .sink(receiveValue: { rootResponse in
                 XCTAssertEqual(expectedResponse.nextPath, rootResponse?.nextPath)
             })
             .store(in: &cancellables)
         
-        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
+        XCTAssertTrue(mockFetchCounterServiceProvider.isGetRootCalled)
     }
     
     func test_fetchButtonTapped_rootPublisher_failure() {
         // Given
         let expectedError = APIClientError.badRequest
         let expectedMessage = APIClientError.badRequest.message
-        mockCodeFetcherServiceProvider.mockRootError = expectedError
+        mockFetchCounterServiceProvider.mockRootError = expectedError
         
         // When
         sut.fetchButtonTapped()
         
         // Then
         XCTAssertEqual(sut.fetchState, .loading)
-        mockCodeFetcherServiceProvider.currentAPIClientErrorPublisher?
+        mockFetchCounterServiceProvider.currentAPIClientErrorPublisher?
             .sink(receiveValue: { error in
                 XCTAssertEqual(expectedError.statusCode, error?.statusCode)
                 XCTAssertEqual(expectedMessage, error?.message)
             })
             .store(in: &cancellables)
 
-        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetRootCalled)
+        XCTAssertTrue(mockFetchCounterServiceProvider.isGetRootCalled)
     }
     
     func test_fetchButtonTapped_responseCodePublisher_success() {
         // Given
         let mockRootResponse = RootResponse(nextPath: "/path")
-        mockCodeFetcherServiceProvider.mockRootResponse = mockRootResponse
+        mockFetchCounterServiceProvider.mockRootResponse = mockRootResponse
         
         let expectedResponse = ResponseCodeResponse(path: "/path", responseCode: "0000")
-        mockCodeFetcherServiceProvider.mockResponseCodeResponse = expectedResponse
+        mockFetchCounterServiceProvider.mockResponseCodeResponse = expectedResponse
         
         // When
         sut.fetchButtonTapped()
         
         // Then
-        mockCodeFetcherServiceProvider.currentResponseCodeResponsePublisher?
+        mockFetchCounterServiceProvider.currentResponseCodeResponsePublisher?
             .sink(receiveValue: { responseCodeResponse in
                 XCTAssertEqual(expectedResponse.path, responseCodeResponse?.path)
                 XCTAssertEqual(expectedResponse.responseCode, responseCodeResponse?.responseCode)
             })
             .store(in: &cancellables)
 
-        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        XCTAssertTrue(mockFetchCounterServiceProvider.isGetResponseCodeCalled)
     }
     
     func test_fetchButtonTapped_responseCodePublisher_failure() {
         // Given
         let mockRootResponse = RootResponse(nextPath: "/path")
-        mockCodeFetcherServiceProvider.mockRootResponse = mockRootResponse
+        mockFetchCounterServiceProvider.mockRootResponse = mockRootResponse
         
         let expectedError = APIClientError.badRequest
         let expectedMessage = APIClientError.badRequest.message
-        mockCodeFetcherServiceProvider.mockResponseCodeError = expectedError
+        mockFetchCounterServiceProvider.mockResponseCodeError = expectedError
         
         // When
         sut.fetchButtonTapped()
         
         // Then
-        mockCodeFetcherServiceProvider.currentAPIClientErrorPublisher?
+        mockFetchCounterServiceProvider.currentAPIClientErrorPublisher?
             .sink(receiveValue: { error in
                 XCTAssertEqual(expectedError.statusCode, error?.statusCode)
                 XCTAssertEqual(expectedMessage, error?.message)
             })
             .store(in: &cancellables)
 
-        XCTAssertTrue(mockCodeFetcherServiceProvider.isGetResponseCodeCalled)
+        XCTAssertTrue(mockFetchCounterServiceProvider.isGetResponseCodeCalled)
     }
     
     func test_fetchState_rootPublisher_success() {
         // Given
         let expectedResponse = RootResponse(nextPath: "http://localhost8000")
-        mockCodeFetcherServiceProvider.mockRootResponse = expectedResponse
+        mockFetchCounterServiceProvider.mockRootResponse = expectedResponse
         
         // When
         sut.fetchButtonTapped()
         
         // Then
         XCTAssertEqual(sut.fetchState, .loading)
-        mockCodeFetcherServiceProvider.currentRootResponsePublisher?
+        mockFetchCounterServiceProvider.currentRootResponsePublisher?
             .sink(receiveValue: { rootResponse in
                 XCTAssertEqual(self.sut.fetchState, .loading)
             })
@@ -133,7 +133,7 @@ final class FetchCounterViewModelTests: XCTestCase {
     func test_fetchState_rootPublisher_failure() {
         // Given
         let mockError = APIClientError.badRequest
-        mockCodeFetcherServiceProvider.mockRootError = mockError
+        mockFetchCounterServiceProvider.mockRootError = mockError
 
         let expectedMessage = APIClientError.badRequest.message
         let stateChangeExpectation = expectation(description: "State should change to error")
@@ -159,10 +159,10 @@ final class FetchCounterViewModelTests: XCTestCase {
     func test_fetchState_responseCodePublisher_success() {
         // Given
         let mockRootResponse = RootResponse(nextPath: "http://localhost8000")
-        mockCodeFetcherServiceProvider.mockRootResponse = mockRootResponse
+        mockFetchCounterServiceProvider.mockRootResponse = mockRootResponse
         
         let mockResponseCodeResponse = ResponseCodeResponse(path: "/path", responseCode: "0000")
-        mockCodeFetcherServiceProvider.mockResponseCodeResponse = mockResponseCodeResponse
+        mockFetchCounterServiceProvider.mockResponseCodeResponse = mockResponseCodeResponse
         
         let expectedResult = "0000"
         let stateChangeExpectation = expectation(description: "State should change to success")
@@ -188,10 +188,10 @@ final class FetchCounterViewModelTests: XCTestCase {
     func test_fetchState_responseCodePublisher_failure() {
         // Given
         let mockRootResponse = RootResponse(nextPath: "http://localhost8000")
-        mockCodeFetcherServiceProvider.mockRootResponse = mockRootResponse
+        mockFetchCounterServiceProvider.mockRootResponse = mockRootResponse
         
         let mockError = APIClientError.badRequest
-        mockCodeFetcherServiceProvider.mockResponseCodeError = mockError
+        mockFetchCounterServiceProvider.mockResponseCodeError = mockError
         
         let expectedMessage = APIClientError.badRequest.message
         let stateChangeExpectation = expectation(description: "State should change to error")
@@ -217,10 +217,10 @@ final class FetchCounterViewModelTests: XCTestCase {
     func test_fetchCount() {
         // Given
         let mockRootResponse = RootResponse(nextPath: "/path")
-        mockCodeFetcherServiceProvider.mockRootResponse = mockRootResponse
+        mockFetchCounterServiceProvider.mockRootResponse = mockRootResponse
         
         let mockResponseCodeResponse = ResponseCodeResponse(path: "/path", responseCode: "0000")
-        mockCodeFetcherServiceProvider.mockResponseCodeResponse = mockResponseCodeResponse
+        mockFetchCounterServiceProvider.mockResponseCodeResponse = mockResponseCodeResponse
         
         let expectedResult = 1
         let fetchCountExpectation = expectation(description: "Fetch count should increase 1")

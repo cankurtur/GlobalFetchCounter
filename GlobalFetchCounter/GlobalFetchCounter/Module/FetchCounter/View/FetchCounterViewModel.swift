@@ -1,6 +1,6 @@
 //
 //  FetchCounterViewModel.swift
-//  FetchCounterModule
+//  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 9.02.2025.
 //
@@ -17,11 +17,11 @@ final class FetchCounterViewModel: ObservableObject {
         }
     }
     
-    private let codeFetcherServiceProvider: CodeFetcherServiceProtocol
+    private let fetchCounterServiceProvider: FetchCounterServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(codeFetcherServiceProvider: CodeFetcherServiceProtocol = CodeFetcherServiceProvider()) {
-        self.codeFetcherServiceProvider = codeFetcherServiceProvider
+    init(fetchCounterServiceProvider: FetchCounterServiceProtocol = FetcherCounterServiceProvider()) {
+        self.fetchCounterServiceProvider = fetchCounterServiceProvider
     }
     
     // Fetch button action.
@@ -43,7 +43,7 @@ final class FetchCounterViewModel: ObservableObject {
 private extension FetchCounterViewModel {
     // Creates root publisher. Removes base URL prefix from the path.
     func createRootPublisher() -> AnyPublisher<String, APIClientError> {
-        codeFetcherServiceProvider.getRoot()
+        fetchCounterServiceProvider.getRoot()
             .compactMap { $0.nextPath }
             .map { nextPath -> String in
                 nextPath.replacingOccurrences(of: Config.shared.baseUrl, with: Localizable.empty)
@@ -55,7 +55,7 @@ private extension FetchCounterViewModel {
     func createResponseCodePublisher(from rootPublisher: AnyPublisher<String, APIClientError>) -> AnyPublisher<String, APIClientError> {
         rootPublisher
             .flatMap { [weak self] path in
-                self?.codeFetcherServiceProvider.getResponseCode(with: path) ?? Empty().eraseToAnyPublisher()
+                self?.fetchCounterServiceProvider.getResponseCode(with: path) ?? Empty().eraseToAnyPublisher()
             }
             .compactMap { $0.responseCode }
             .eraseToAnyPublisher()

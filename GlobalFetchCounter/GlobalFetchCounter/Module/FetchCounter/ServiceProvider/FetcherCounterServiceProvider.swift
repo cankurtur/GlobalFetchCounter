@@ -1,6 +1,6 @@
 //
-//  CodeFetcherServiceProvider.swift
-//  FetchCounterModule
+//  FetcherCounterServiceProvider.swift
+//  GlobalFetchCounter
 //
 //  Created by Can Kurtur on 9.02.2025.
 //
@@ -10,10 +10,10 @@ import Combine
 import GlobalNetworking
 
 /// A class that fetches data using a network manager.
-final class CodeFetcherServiceProvider: CodeFetcherServiceProtocol {
+final class FetcherCounterServiceProvider: FetchCounterServiceProtocol {
     
     // Network manager used to make API requests.
-    private let networkManager = NetworkManager<CodeFetcherEndpointItem>(clientErrorType: ClientError.self)
+    private let networkManager = NetworkManager<FetchCounterEndpointItem>(clientErrorType: ClientError.self)
 
     // Fetches the root response from the API.
     func getRoot() -> AnyPublisher<RootResponse, APIClientError> {
