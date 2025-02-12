@@ -482,7 +482,7 @@
 			repositoryURL = "https://github.com/cankurtur-global/GlobalNetworking";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
