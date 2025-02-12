@@ -11,11 +11,7 @@ import Combine
 /// The ViewModel for FetchCounterView, responsible for handling the logic and state.
 final class FetchCounterViewModel: ObservableObject {
     @Published private(set) var fetchState: FetchState = .initial
-    @Published private(set) var fetchCount: Int = UserDefaultConfig.fetchCount {
-        didSet {
-            UserDefaultConfig.fetchCount.increase()
-        }
-    }
+    @Published private(set) var fetchCount: Int = UserDefaultConfig.fetchCount
     
     private let fetchCounterServiceProvider: FetchCounterServiceProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -74,6 +70,7 @@ private extension FetchCounterViewModel {
     // Updates the view state after successfully fetching a response code.
     func handleSuccess(_ responseCode: String) {
         self.fetchCount.increase()
+        UserDefaultConfig.fetchCount.increase()
         self.fetchState = .success(result: responseCode)
     }
 }
