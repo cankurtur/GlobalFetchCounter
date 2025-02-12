@@ -9,7 +9,6 @@ import Foundation
 
 /// Enum representing the state of a fetch operation when clicking on fetch button..
 enum FetchState: Equatable {
-    
     /// Initial state before the fetch starts.
     case initial
     /// The fetch is in progress (loading state).
