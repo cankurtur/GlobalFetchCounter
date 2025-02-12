@@ -76,6 +76,13 @@ The App retains a FetchCounterModule which consists of a View and ViewModel. The
 -	A custom `@propertyWrapper` named `UserDefaultsProperty` was created to facilitate storing and retrieving values in `UserDefaults`. This wrapper supports the storage of `Codable` responses in `UserDefaults`.
 -	To safeguard sensitive information such as API keys and base URLs, a `Config` file was created. This approach centralizes the management of sensitive values and ensures they are securely handled within the application, preventing direct access to these values
 
+## CI-CD 
+
+Bitrise has been integrated into the project to ensure code quality and stability. For every pull request (PR) to the main branch, all tests are automatically executed. The merge option becomes available only after all tests successfully pass, preventing unstable or faulty code from being merged.
+
+Below is the app dashboard on Bitrise:
+https://app.bitrise.io/app/c6de89f9-766e-4cb9-b221-2e40044f941e
+
 ## Trade-offs
 ### Not using Singleton for NetworkManager
 The network manager could be used with a `CompositionRoot` singleton class. Since the network manager is thread-safe, it would be possible to create a `CompositionRoot` singleton and add the network manager as a lazy variable. This way, the network manager would be accessible throughout the app via the singleton.
@@ -96,7 +103,7 @@ This approach prioritizes testability and modularity over minor performance opti
 
 ### XCFramework for GlobalNetworking 
 
-- Reusability & Modularity – By packaging GlobalNetworking as an `XCFramework`, it can be easily reused across multiple projects without duplicating code.
+- Reusability & Modularity – By packaging `GlobalNetworking` as an `XCFramework`, it can be easily reused across multiple projects without duplicating code.
 - Binary Distribution – Since `XCFrameworks` contain precompiled binaries, they improve build times and make integration more efficient.
 - Cross-Platform Support – `XCFrameworks` support multiple architectures (iOS, macOS, etc.), making them more flexible than traditional frameworks.
 - Public Repository for Open Access – The framework is now available as a public repository.
