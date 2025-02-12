@@ -78,7 +78,7 @@ The App retains a FetchCounterModule which consists of a View and ViewModel. The
 
 ## CI-CD 
 
-Bitrise has been integrated into the project to ensure code quality and stability. For every pull request (PR) to the main branch, all tests are automatically executed. The merge option becomes available only after all tests successfully pass, preventing unstable or faulty code from being merged.
+Bitrise has been integrated into the project to ensure code quality and stability. For every pull request to the main and develop branchs, all tests are automatically executed. The merge option becomes available only after all tests successfully pass, preventing unstable or faulty code from being merged.
 
 Below is the app dashboard on Bitrise:
 https://app.bitrise.io/app/c6de89f9-766e-4cb9-b221-2e40044f941e
