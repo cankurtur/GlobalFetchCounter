@@ -7,57 +7,32 @@
 
 import SwiftUI
 import ComponentKit
+import ComposableArchitecture
 
 struct FetchCounterView: View {
-    @StateObject var viewModel = FetchCounterViewModel()
-    @State private var isLoading: Bool = false
-    @State private var isShowAlert: Bool = false
-    @State private var currentAlertModel: AlertModel?
-    @State private var responseCode: String = Localizable.empty
-
+    let store: StoreOf<FetchCounterFeature>
+    
     var body: some View {
         VStack(spacing: AppPadding.contentPadding) {
             AppDescriptedText(
                 title: Localizable.responseCode,
-                description: responseCode
+                description: store.responseCode
             )
             
             AppDescriptedText(
                 title: Localizable.fetchCount,
-                description: String(viewModel.fetchCount)
+                description: String(store.fetchCount)
             )
             
             AppGradientButton(
                 text: Localizable.fetch,
                 action: {
-                    viewModel.fetchButtonTapped()
+                    store.send(.fetchButtonTapped)
                 },
-                isLoading: isLoading
+                isLoading: store.isLoading
             )
         }
         .padding(AppPadding.containerPadding)
-        .onReceive(viewModel.$fetchState, perform: { state in
-            switch state {
-            case .loading:
-                isLoading = true
-            case .success(let result):
-                responseCode = result
-                isLoading = false
-            case .errorOccured(let message):
-                isLoading = false
-                currentAlertModel = AlertModel(message: message)
-                isShowAlert = true
-            case .initial:
-                break
-            }
-        })
-        .appAlert(isPresented: $isShowAlert, alertModel: currentAlertModel)
+        .appAlert(isPresented: .constant(store.isShowError), alertModel: AlertModel(message: store.errorMessage))
     }
 }
-
-// MARK: - Preview
-
-#Preview {
-    FetchCounterView()
-}
-

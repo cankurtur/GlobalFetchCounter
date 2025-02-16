@@ -11,7 +11,7 @@ import Combine
 /// A protocol defining methods for fetching data from a service.
 protocol FetchCounterServiceProtocol {
     // A method to fetch the root response from the API.
-    func getRoot() -> AnyPublisher<RootResponse, APIClientError>
+    func getRoot() async throws -> RootResponse
     // A method to fetch the response code for a given path from the API.
-    func getResponseCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError>
+    func getResponseCode(with path: String) async throws -> ResponseCodeResponse
 }

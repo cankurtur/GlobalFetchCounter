@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		252471F62D5964E700625264 /* ComponentKit in Frameworks */ = {isa = PBXBuildFile; productRef = 252471F52D5964E700625264 /* ComponentKit */; };
 		25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 25AF01402D57EE8A00F26659 /* GlobalNetworking */; };
+		25B72CB02D62365A009B6F0D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 25B72CAF2D62365A009B6F0D /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			files = (
 				25AF01412D57EE8A00F26659 /* GlobalNetworking in Frameworks */,
 				252471F62D5964E700625264 /* ComponentKit in Frameworks */,
+				25B72CB02D62365A009B6F0D /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +137,7 @@
 			packageProductDependencies = (
 				25AF01402D57EE8A00F26659 /* GlobalNetworking */,
 				252471F52D5964E700625264 /* ComponentKit */,
+				25B72CAF2D62365A009B6F0D /* ComposableArchitecture */,
 			);
 			productName = GlobalFetchCounter;
 			productReference = 25B3EB5B2D57C84E005DF855 /* GlobalFetchCounter.app */;
@@ -171,6 +174,7 @@
 			packageReferences = (
 				25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */,
 				252471F42D5964E700625264 /* XCLocalSwiftPackageReference "GlobalFetchCounter/Packages/ComponentKit" */,
+				25B72CAE2D62365A009B6F0D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 25B3EB5C2D57C84E005DF855 /* Products */;
@@ -485,6 +489,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		25B72CAE2D62365A009B6F0D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.17.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -496,6 +508,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 25AF013F2D57EE8A00F26659 /* XCRemoteSwiftPackageReference "GlobalNetworking" */;
 			productName = GlobalNetworking;
+		};
+		25B72CAF2D62365A009B6F0D /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25B72CAE2D62365A009B6F0D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

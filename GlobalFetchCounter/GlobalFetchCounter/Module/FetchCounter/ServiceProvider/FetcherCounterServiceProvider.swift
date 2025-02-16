@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 import GlobalNetworking
 
 /// A class that fetches data using a network manager.
@@ -14,14 +13,15 @@ final class FetcherCounterServiceProvider: FetchCounterServiceProtocol {
     
     // Network manager used to make API requests.
     private let networkManager = NetworkManager<FetchCounterEndpointItem>(clientErrorType: ClientError.self)
-
-    // Fetches the root response from the API.
-    func getRoot() -> AnyPublisher<RootResponse, APIClientError> {
-        return networkManager.request(endpoint: .getRoot, responseType: RootResponse.self)
+    
+    func getRoot() async throws -> RootResponse {
+        let response = try await networkManager.request(endpoint: .getRoot, responseType: RootResponse.self)
+        return response
     }
     
-    // Fetches the response code for a specific path.
-    func getResponseCode(with path: String) -> AnyPublisher<ResponseCodeResponse, APIClientError> {
-        return networkManager.request(endpoint: .getResponseCode(path), responseType: ResponseCodeResponse.self)
+    func getResponseCode(with path: String) async throws -> ResponseCodeResponse {
+        let response = try await networkManager.request(endpoint: .getResponseCode(path), responseType: ResponseCodeResponse.self)
+        return response
     }
 }
+

@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct GlobalFetchCounterApp: App {
     var body: some Scene {
         WindowGroup {
-            FetchCounterView()
+            FetchCounterView(
+                store: Store(initialState: FetchCounterFeature.State(), reducer: {
+                    FetchCounterFeature()
+                })
+            )
         }
     }
 }
