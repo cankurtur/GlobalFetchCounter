@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 import ComponentKit
 
-
 @Reducer
 struct FetchCounterFeature {
  
@@ -19,13 +18,14 @@ struct FetchCounterFeature {
         var errorMessage: String = Localizable.empty
         var isLoading: Bool = false
         var isShowError: Bool = false
-        var fetchCount = 0
+        var fetchCount = UserDefaultConfig.fetchCount
     }
     
     enum Action {
         case fetchButtonTapped
         case rootResponse(Result<RootResponse, APIClientError>)
         case responseCodeResponse(Result<ResponseCodeResponse, APIClientError>)
+        case alertClose(Bool)
     }
     
     private let serviceProvider: FetcherCounterServiceProvider
@@ -51,7 +51,8 @@ struct FetchCounterFeature {
                 return .run { send in
                     do {
                         guard let nextPath = response.nextPath else { throw APIClientError.badRequest }
-                        let response = try await serviceProvider.getResponseCode(with: nextPath)
+                        let path = nextPath.replacingOccurrences(of: Config.shared.baseUrl, with: Localizable.empty)
+                        let response = try await serviceProvider.getResponseCode(with: path)
                         await send(.responseCodeResponse(.success(response)))
                     } catch let error as APIClientError {
                         await send(.responseCodeResponse(.failure(error)))
@@ -67,12 +68,19 @@ struct FetchCounterFeature {
                 state.isLoading = false
                 guard let responseCode = response.responseCode else { return .none }
                 state.responseCode = responseCode
+                state.fetchCount.increase()
+                UserDefaultConfig.fetchCount.increase()
                 return .none
 
             case .responseCodeResponse(.failure(let error)):
                 state.isLoading = false
                 state.isShowError = true
                 state.errorMessage = error.message
+                return .none
+                
+            case .alertClose(let isClose):
+                state.isShowError = isClose
+                state.errorMessage = Localizable.empty
                 return .none
             }
         }

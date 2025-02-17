@@ -10,7 +10,8 @@ import ComponentKit
 import ComposableArchitecture
 
 struct FetchCounterView: View {
-    let store: StoreOf<FetchCounterFeature>
+    @Bindable
+    var store: StoreOf<FetchCounterFeature>
     
     var body: some View {
         VStack(spacing: AppPadding.contentPadding) {
@@ -33,6 +34,6 @@ struct FetchCounterView: View {
             )
         }
         .padding(AppPadding.containerPadding)
-        .appAlert(isPresented: .constant(store.isShowError), alertModel: AlertModel(message: store.errorMessage))
+        .appAlert(isPresented: $store.isShowError.sending(\.alertClose), alertModel: AlertModel(message: store.errorMessage))
     }
 }
